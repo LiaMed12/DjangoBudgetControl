@@ -1,0 +1,21 @@
+<!doctype html>
+{% extends "login/Wrapper.html" %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Main</title>
+    <link rel="stylesheet" href="{% static 'css/wrapp.css' %}">
+</head>
+<body>
+{% block content %}
+<br>
+<h2>Hi, welcome to CheckPollyMoney</h2>
+<p>We can help you track your cash flow. Your life will be <b>easier!</b></p>
+<div class="container mt-4">
+    <a class="btn-default" href="{%url 'login' %}">Login</a>
+    <p><a class="btn-default" href="{% url 'registration' %}">Registration</a></p>
+</div>
+{% endblock %}
+</body>
+</html>

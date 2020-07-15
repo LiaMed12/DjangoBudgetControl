@@ -1,0 +1,23 @@
+<!doctype html>
+{% extends "login/Wrapper.html" %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <title>exit</title>
+</head>
+<body>
+{% block content %}
+
+<div>
+    <p>You are signed out of your account!</p>
+    <p>Polly will be waiting for you again!</p>
+    <br>
+    <a class="btn-default" style="margin-left: 3%" href="{% url 'login' %}">Click here to login again.</a>
+</div>
+
+{% endblock %}
+</body>
+</html>

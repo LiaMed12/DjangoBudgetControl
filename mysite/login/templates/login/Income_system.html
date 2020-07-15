@@ -1,0 +1,86 @@
+<!doctype html>
+{% extends "login/Wrapper.html" %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Your income</title>
+     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <style>
+        #count_graph {
+            max-width: 80%;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+
+<script>
+    document.write(new Date());
+</script>
+<br>
+
+<h1>Your income </h1>
+
+<h3>Number of Payments this Week</h3>
+{% load googlecharts %}
+<div id="count_graph" style="width: 95%">
+{% googlecharts %}
+    {% data values "count" %}
+    {% col "string" "Date" %}"{{ val|date:"j M" }}"{% endcol %}
+    {% col "number" "# of payments" %}{{ val}}{% endcol %}
+    {% enddata %}
+
+    {% options %}
+    kind: "LineChart",
+    options: {
+    backgroundColor: "#f9f9f9",
+    colors: ["#09f"],
+    gridlineColor: "#ddd",
+    vAxis: {minValue: 0},
+    chartArea: {left: 50}
+    }
+    {% endoptions %}
+
+    {% graph "count_graph" "count" %} {# используем опции по умолчанию #}
+    {% endgooglecharts %}
+
+</div>
+<br>
+<h3>Enter the time period of interest</h3>
+<form method="POST" class="post-form" >
+    <table>
+        {% csrf_token %}
+        {{ form }}
+        <input id="id_renewal_date" name="renewal_date" type="text" value="Enter date" required/>
+        <input id="id_renewal_date2" name="renewal_date2" type="text" value="Enter date" required/>
+        <br/>
+    </table>
+<br>
+    <button type="submit" class="save btn btn-default" style="margin-left: 13%">choose day</button>
+    <br>
+    <br>
+    {% csrf_token %}
+    <table border="1" width="95%" cellpadding="5" style="margin-left: 2.5%">
+        <tr>
+            <th> Date</th>
+            <th> The amount</th>
+            <th> Income from</th>
+        </tr>
+        {% for post in posts %}
+        <td>{{ post.date }}</td>
+        <td>{{ post.sum }}</td>
+        {%if post.id_personal_category_income %}
+        <td>{{post.id_personal_category_income}}</td>
+        {%else %}
+        <td>{{ post.id_category_income_id}}</td>
+        {% endif %}
+        <tr></tr>
+        {% endfor %}
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<!doctype html>
+{% extends "login/Wrapper.html" %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Add costs</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+<body>
+{% block content %}
+
+<script>
+    document.write(new Date());
+</script>
+<br>
+<h1>Add cost </h1>
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    Date: {{ form.date }}
+    <br>
+    <p>
+        Sum: {{ form.sum }}
+    </p>
+    <p>
+        Usually categories: {{ form.id_category_cost }}
+    </p>
+
+    <p>The following categories are available to you:
+
+    {% for post in form2 %}
+    <strong> {{ post.person_category_name }}; </strong>
+    {% endfor %}
+    </p>
+    <p>
+        Your categories: {{ form.id_personal_category_cost }}
+    </p>
+    {% if exp == '1' %}
+    <p style="color: #c90202">You cannot use 'usually categories' and 'your categories' at the same time. Choose one
+        thing! </p>
+    {% elif exp == '0'%}
+    <p style="color: #c90202">The fields in categories must not be empty!</p>
+    {% elif exp == '-1'%}
+    <p style="color: #c90202">Oops ... Polly did not find such a category</p>
+    {% endif %}
+
+    <button type="submit" class="save btn btn-default" style="margin-left: 3%">Save</button>
+</form>
+
+<br>
+<h3>Want to add your category or remove unnecessary?</h3>
+<div>
+    <a class="btn-default" href="{% url 'add_pers_cost' %}">Add new category cost</a>
+    <a class="btn-default" href="{% url 'rem_pers_cost' %}">Delete your category cost</a>
+</div>
+{% endblock %}
+</body>
+</html>

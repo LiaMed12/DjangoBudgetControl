@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/wrapp.css" type="text/css"/>
+</head>
+<body>
+
+
+<header class="Up">
+    <a class="MainSubsribe" href="{% url 'activated_account$' %}">CheckPollyMoney</a>
+    <span style="margin-left: 55%;">
+    {% if user.is_authenticated and ex == 'Ok' %}
+    Hello, {{user.username}}
+    <a class="btn-default" style="margin-left: 1%" href="{% url 'logout' %}">Exit</a>
+    {% endif %}
+    </span>
+</header>
+<div class="mainContent">
+    {% block content %}
+    {% endblock %}
+</div>
+<footer>
+    <b>Copyright © 2020 Polytech peter the great</b>
+    <address>Saint-petersburg, Russia.</address>
+</footer>
+</body>
+</html>

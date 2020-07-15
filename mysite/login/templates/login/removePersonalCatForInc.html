@@ -1,0 +1,29 @@
+<!doctype html>
+{% extends "login/Wrapper.html" %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Delete category income</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+<body>
+{% block content %}
+<h1>Remove Personal Category </h1>
+<p>Your categories now:
+{% for post in form2 %}
+<strong> {{ post.person_category_name }}; </strong>
+    {% endfor %}</p>
+<h3>Remove unwanted category from your list</h3>
+{% if exp == '0'%}
+<p style="color: #c90202">The field must not be empty!</p>
+{% endif %}
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default" style="margin-left: 3%">Delete</button>
+</form>
+{% endblock %}
+</body>
+</html>

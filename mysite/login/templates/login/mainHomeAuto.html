@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% extends "login/Wrapper.html" %}
+    {% load static %}
+    <title>CheckPollyMoney</title>
+  </head>
+<body>
+{% block content %}
+<br>
+<hr style="width: 95%">
+<br>
+<div class="page-header">
+    Your Costs: <a class="btn-default" href="{% url 'cost_system' %}">View my expenses</a>
+    <a class="btn-default" href="{% url 'add_cost' %}">Edit costs</a>
+</div>
+<hr style="width: 95%">
+<br>
+<div class="page-header">
+    Your Income: <a class="btn-default" href="{% url 'income_system' %}">View my income</a>
+    <a class="btn-default" href="{% url 'add_income' %}">Edit income</a>
+</div>
+<hr style="width: 95%">
+
+{% endblock %}
+</body>
+</html>

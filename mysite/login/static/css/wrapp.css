@@ -1,0 +1,58 @@
+header.Up {
+    background: #73AA98;
+    padding: 3px; /* Поля вокруг текста */
+    border: 4px double #000000; /* Параметры границы */
+    margin-right: 1%; /* Расстояние от левого края */
+    margin-left: 1%; /* Расстояние от левого края */
+    font-family: "Gill Sans MT", sans-serif;
+}
+
+.MainSubsribe {
+    font-size: xx-large;
+    font-family: "Gill Sans MT", sans-serif;
+    outline: none; /* убирать контур в Mozilla */
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    color: black;
+}
+
+div.mainContent {
+    padding-bottom: 8%;
+    background: white;
+    margin-left: 2%; /* Расстояние от левого края */
+    margin-right: 2%; /* Расстояние от левого края */
+    text-indent: 2em;
+    font-family: "Gill Sans MT", sans-serif;
+    border: 1px outset black /* Параметры границы */
+}
+
+body {
+    background: #ffdead;
+}
+
+footer {
+    font-family: "Gill Sans MT", sans-serif;
+    background: #73AA98;
+    border: 4px double #000000; /* Параметры границы */
+    margin-right: 1%; /* Расстояние от левого края */
+    margin-left: 1%; /* Расстояние от левого края */
+}
+
+.btn-default {
+    font-family: "Gill Sans MT", sans-serif;
+    color: #fff; /* цвет текста */
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    background: rgb(213, 115, 102); /* фон кнопки */
+    padding: .4em .4em; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+    font-size: medium;
+}
+
+.btn-default:hover {
+    background: rgb(26, 73, 87);
+}
+
+.btn-default:active {
+    background: rgb(152, 15, 0);
+}

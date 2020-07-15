@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% extends "login/Wrapper.html" %}
+    {% load static %}
+    <meta charset="utf-8">
+    <title>registration</title>
+</head>
+<body>
+{% block content %}
+<h2>User registration</h2>
+<form method="POST">
+    {% csrf_token %}
+    <div>
+        {{ regform.as_p }}
+        <button type="submit" class="save btn btn-default" style="margin-left: 3%"> Registration</button>
+    </div>
+</form>
+{% endblock %}
+
+</body>
+</html>
